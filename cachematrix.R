@@ -24,22 +24,22 @@ makeCacheMatrix <- function(x = matrix()) {
 ## else it does the same as it would otherwise which is run solve() and get inverse, then setInverse in the matCache class
 
 cacheSolve <- function(x, ...) {
-  inv  <- x$getinverse()
-  if (!is.null(inv)){
+  inv2  <- x$getinverse()
+  if (!is.null(inv2)){
     trueTest <- all(x2 == x)
     if (trueTest == TRUE) {
       message("getting cached matrix data")
-      return(inv)
+      return(inv2)
     }
     else {
       data  <- x$get()
-      i  <- solve(data, ...)
-      x$setInverse(inv)
-      return(inv)      
+      inv2  <- solve(data, ...)
+      x$setInverse(inv2)
+      return(inv2)      
     }
   }
   data  <- x$get()
-  i  <- solve(data, ...)
-  x$setInverse(inv)
-  return(inv)
+  inv2  <- solve(data, ...)
+  x$setInverse(inv2)
+  return(inv2)
 }
